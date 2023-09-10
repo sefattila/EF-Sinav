@@ -59,6 +59,16 @@ namespace Sinav.Repository.Concretes
             return _table.Where(expression).ToList();
         }
 
+        public List<T> OrderByAsc<TKey>(Expression<Func<T, TKey>> expression)
+        {
+            return _table.OrderBy(expression).ToList();
+        }
+
+        public List<T> OrderByDesc<TKey>(Expression<Func<T, TKey>> expression)
+        {
+            return _table.OrderByDescending(expression).ToList();
+        }
+
         public void Update(T entity)
         {
             _context.Entry<T>(entity).State = EntityState.Modified;

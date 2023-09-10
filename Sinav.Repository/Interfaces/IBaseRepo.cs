@@ -47,5 +47,14 @@ namespace Sinav.Repository.Interfaces
         /// </summary>
         /// <returns></returns>
         List<T> GetAll();
+
+        /// <summary>
+        /// Koşula göre sıralı ifadeler
+        /// </summary>
+        /// <typeparam name="TKey"></typeparam>
+        /// <param name="expression"></param>
+        /// <returns></returns>
+        List<T> OrderByAsc<TKey>(Expression<Func<T, TKey>> expression);
+        List<T> OrderByDesc<TKey>(Expression<Func<T, TKey>> expression);
     }
 }

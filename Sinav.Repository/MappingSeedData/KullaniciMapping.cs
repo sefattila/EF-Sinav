@@ -15,7 +15,7 @@ namespace Sinav.Repository.MappingSeedData
         public void Configure(EntityTypeBuilder<Kullanici> builder)
         {
             builder.HasData(
-                    new Kullanici() { Id = 1, FirstName = "Sefa", LastName = "Attila", UserName = "admin", Password = sha256_hash("sssSSS..") }
+                    new Kullanici() { Id = 1, FirstName = "Sefa", LastName = "Attila", UserName = "admin", Password = sha256_hash("sssSSS**") }
                 );
         }
 

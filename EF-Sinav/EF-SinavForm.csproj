@@ -9,4 +9,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Sinav.BLL\Sinav.BLL.csproj" />
+  </ItemGroup>
+
 </Project>

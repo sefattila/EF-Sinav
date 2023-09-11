@@ -1,6 +1,8 @@
 ﻿using Castle.Core.Resource;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Sinav.Core.Entities;
+using Sinav.Repository.MappingSeedData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,12 +14,9 @@ namespace Sinav.Repository.Contexts
 {
     public class AppDbContext : DbContext
     {
-        //public DbSet<Category> Categories { get; set; }
-        //public DbSet<Customer> Customers { get; set; }
-        //public DbSet<Event> Events { get; set; }
-        //public DbSet<EventDetail> EventDetails { get; set; }
-        //public DbSet<Ticket> Tickets { get; set; }
-
+        public DbSet<Album> Albums { get; set; }
+        public DbSet<Kullanici> Kullanicis { get; set; }
+        public DbSet<Sanatci> Sanatcis { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseLazyLoadingProxies();
@@ -25,7 +24,9 @@ namespace Sinav.Repository.Contexts
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfiguration(new AlbumMapping())
+                .ApplyConfiguration(new KullaniciMapping())
+                .ApplyConfiguration(new SanatciMapping());
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Sinav.Core.Abstract;
+using Sinav.Core.Enums;
 using Sinav.Repository.Contexts;
 using Sinav.Repository.Interfaces;
 using System;
@@ -41,7 +42,7 @@ namespace Sinav.Repository.Concretes
 
         public List<T> GetAll()
         {
-            return _table.ToList();
+            return _table.Where(x=>x.Status!=Status.Passive).ToList();
         }
 
         public T GetDefault(Expression<Func<T, bool>> expression)
